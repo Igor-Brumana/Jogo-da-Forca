@@ -61,16 +61,21 @@ def jogo(palavra):
 
 
 try:
-    with open("palavras", "r") as arquivo:
+    with open("palavras.txt", "r") as arquivo:
         numero = random.randint(0,19)
         palavras = arquivo.readlines()
+        if len(palavras) == 0:
+            print("arquivo vazio")
+            exit()
         palavra = palavras[numero][0:-1]
         print("Bem-vindo ao Jogo da Forca!\n")
         jogo(palavra)
 except FileNotFoundError:
     print("Arquivo não encontrado!")
+    exit()
 except IOError:
     print("ERRO ao abrir o arquivo")
+    exit()
 
 
 
